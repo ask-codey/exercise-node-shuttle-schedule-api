@@ -12,7 +12,7 @@ The campus shuttle's API already answers riders: every route, and one route by i
 - `shutdown.js`: `shutdown({ server, client, logger, signal })`, which closes the server, then the database. For you to finish.
 - `server.js`: loads the settings, connects to MongoDB, starts the server at the port from `PORT`, and calls `shutdown` on Ctrl+C or SIGTERM. Ready to use.
 - `shuttle.js` and `sample-routes.js`: the shuttle's three routes, kept in MongoDB, and `createShuttleRepository(db)`, with `listRoutes`, `findRoute` and `pingDatabase`. Ready to use.
-- `shuttle.http`: the requests to try, for VS Code's REST Client extension. Ready to use.
+- `shuttle.insomnia.json`: the requests to try, as an Insomnia collection. Ready to use.
 - `.env.example`: the three settings, with values for your own computer. Copy it to `.env`. Ready to use.
 - `config.test.js`, `logger.test.js`, `app.test.js` and `shutdown.test.js`: the tests, 14 in all, and `throwaway-database.js`, the throwaway MongoDB they use. You don't need to change them.
 - `package.json` and `package-lock.json`: the project's settings, its scripts (`start`, `dev` and `test`) and its packages at exact versions. Ready to use.
@@ -35,7 +35,7 @@ MongoDB must be running on your computer, as in the course's MongoDB setup lesso
 npm run dev
 ```
 
-`npm run dev` restarts the server each time you save, and pipes its logs through pino-pretty, which shows each one in color, a field per line. `npm start` runs it the way a host would, with one JSON line per log. Open `shuttle.http` and click **Send Request** above any request; watch the server's terminal as each one is logged. Stop the server with **Ctrl+C**: once `shutdown.js` is done, its last log line says the server and the database connection are closed.
+`npm run dev` restarts the server each time you save, and pipes its logs through pino-pretty, which shows each one in color, a field per line. `npm start` runs it the way a host would, with one JSON line per log. In Insomnia, click **Import** in your `Node.js in Depth` project, choose `shuttle.insomnia.json`, and send any request; watch the server's terminal as each one is logged. Stop the server with **Ctrl+C**: once `shutdown.js` is done, its last log line says the server and the database connection are closed.
 
 Until `config.js` is finished, the server stops at once with `Not built yet.` That's expected.
 

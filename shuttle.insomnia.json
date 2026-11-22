@@ -1,0 +1,140 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2026-11-22T00:00:00Z",
+  "__export_source": "ask-codey:exercise",
+  "resources": [
+    {
+      "_id": "wrk_shuttle",
+      "_type": "workspace",
+      "parentId": null,
+      "name": "Shuttle Schedule API",
+      "description": "Exercise: Shuttle Schedule API. Start the server first, then send the requests in order; each one's description says what to expect. If your server runs at another address, change base_url in the Base Environment.",
+      "scope": "collection"
+    },
+    {
+      "_id": "env_shuttle_base",
+      "_type": "environment",
+      "parentId": "wrk_shuttle",
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://localhost:3100"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "base_url"
+        ]
+      },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 0
+    },
+    {
+      "_id": "jar_shuttle",
+      "_type": "cookie_jar",
+      "parentId": "wrk_shuttle",
+      "name": "Default Jar",
+      "cookies": []
+    },
+    {
+      "_id": "req_shuttle_100",
+      "_type": "request",
+      "parentId": "wrk_shuttle",
+      "name": "1. Every route",
+      "description": "Expect: 200.",
+      "method": "GET",
+      "url": "{{ _.base_url }}/routes",
+      "body": {},
+      "headers": [],
+      "parameters": [],
+      "authentication": {},
+      "metaSortKey": 100,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global"
+    },
+    {
+      "_id": "req_shuttle_110",
+      "_type": "request",
+      "parentId": "wrk_shuttle",
+      "name": "2. One route by its id",
+      "description": "Expect: 200.",
+      "method": "GET",
+      "url": "{{ _.base_url }}/routes/blue-loop",
+      "body": {},
+      "headers": [],
+      "parameters": [],
+      "authentication": {},
+      "metaSortKey": 110,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global"
+    },
+    {
+      "_id": "req_shuttle_120",
+      "_type": "request",
+      "parentId": "wrk_shuttle",
+      "name": "3. A route that doesn't exist",
+      "description": "Expect: 404.",
+      "method": "GET",
+      "url": "{{ _.base_url }}/routes/purple-line",
+      "body": {},
+      "headers": [],
+      "parameters": [],
+      "authentication": {},
+      "metaSortKey": 120,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global"
+    },
+    {
+      "_id": "req_shuttle_130",
+      "_type": "request",
+      "parentId": "wrk_shuttle",
+      "name": "4. The health check",
+      "description": "Expect: 200 { \"status\": \"ok\" } while MongoDB answers (503 { \"status\": \"unavailable\" } when it doesn't)",
+      "method": "GET",
+      "url": "{{ _.base_url }}/health",
+      "body": {},
+      "headers": [],
+      "parameters": [],
+      "authentication": {},
+      "metaSortKey": 130,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global"
+    },
+    {
+      "_id": "req_shuttle_140",
+      "_type": "request",
+      "parentId": "wrk_shuttle",
+      "name": "5. A request with a token: its Authorization header is logged as [Redacted]",
+      "description": "",
+      "method": "GET",
+      "url": "{{ _.base_url }}/routes",
+      "body": {},
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer example-token-not-a-real-one"
+        }
+      ],
+      "parameters": [],
+      "authentication": {},
+      "metaSortKey": 140,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global"
+    }
+  ]
+}
